@@ -1,3 +1,4 @@
+Details on PDL1 pdb preprocessing and detailed results from this protocol can be found in the docx file:PDL1_binder_design.docx
 I create a directory to save all the files I am using in this protocol:
 
 ```
