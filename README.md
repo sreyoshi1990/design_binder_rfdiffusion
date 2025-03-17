@@ -70,7 +70,7 @@ scaffoldguided.target_ss=../adj_secstr_pdl1/pdl1_truncated_ss.pt \
 scaffoldguided.target_adj=../adj_secstr_pdl1/pdl1_truncated_adj.pt \
 scaffoldguided.scaffold_dir=../adj_secstr_pd1/ \
 inference.num_designs=10 denoiser.noise_scale_ca=0 denoiser.noise_scale_frame=0 
-
+```
 
 To run the scaffold based binder design protocol I had to use a different branch of the RFdiffusion repository:
 
@@ -100,7 +100,8 @@ Then I moved all my pdbs from pdl1_binder, pdl1_binder_pd1_scaffolf, pdl1_binder
 
 ```cp pdl1_binder/*.pdb binder_design_all/
 cp pdl1_binder_pd1_scaffold/*.pdb binder_design_all/
-cp pdl1_binder_unconditional/*.pdb binder_design_all/```
+cp pdl1_binder_unconditional/*.pdb binder_design_all/
+```
 
 
 Then I ran the following command to convert pdbs to silent files, common Rosetta file structure:
@@ -109,7 +110,8 @@ Then I ran the following command to convert pdbs to silent files, common Rosetta
 
 Next I used the silent file as input for generating sequences using proteinMPNN followed by  Rosetta structure refinement (FastRelax) on the backbone. 
 ```
-dl_interface_design.py -silent pdl1_binder.silent -outsilent pdl1_binder_proteinmpnn.silent```
+dl_interface_design.py -silent pdl1_binder.silent -outsilent pdl1_binder_proteinmpnn.silent
+```
 
 Then we used the sequences generated from dl_interface_design protocol to generate the alphafold structures for all 30 different designs alongwith the PDL1 protein.\
 ```conda activate af2_binder_design3```
@@ -129,7 +131,8 @@ The final structures are stored in this directory: pdl1_binder_af2_predicted_pdb
 I ran the following bash command to show the top designs with pae_interaction<20 parameter calculated by AF2:
 
 ```
-awk 'NR==1 || $4 < 20' out.sc | sort -r -k4,4n```
+awk 'NR==1 || $4 < 20' out.sc | sort -r -k4,4n
+```
 
 Following is the output :\
 SCORE:     binder_aligned_rmsd pae_binder pae_interaction pae_target plddt_binder plddt_target plddt_total target_aligned_rmsd time description \
@@ -154,7 +157,3 @@ pdl1_binder_af2_predicted_pdbs/hbonds_count_pymol.pml with output hbond_summary.
 To rank the final binder structures based on the h-bonds calculation I ran the following command:\
 ```awk -F, 'NR==1 {print; next} {print | "sort -t, -k2,2nr"}' hbond_summary.txt```
 
-
-```python
-
-```
