@@ -46,7 +46,7 @@ scaffoldguided.target_pdb=True  \
 scaffoldguided.target_ss=../adj_secstr_pdl1/pdl1_truncated_ss.pt \
 scaffoldguided.target_adj=../adj_secstr_pdl1/pdl1_truncated_adj.pt \ scaffoldguided.scaffold_dir=./ppi_scaffolds/ \
 inference.num_designs=10 denoiser.noise_scale_ca=0 denoiser.noise_scale_frame=0```
-
+```
 
 **RFdiffusion run 3**
 
